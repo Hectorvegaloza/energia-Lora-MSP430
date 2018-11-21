@@ -1,13 +1,59 @@
 Energia-LMIC
 ============
 
-A tentative to make the Arduino-LMIC library work in Energia so that
-MSP430 can also be used easily to talk LoraWAN / The Things Network.
-For more information on Energia, see http://energia.nu
+An effort to make the Arduino-LMIC library work in Energia IDE so that
+MSP430 µCs can also be used easily to talk LoraWAN / [The Things Network](https://www.thethingsnetwork.org/).
+For more information on Energia, see [http://energia.nu](http://energia.nu).
 
-Work in progress !
+Works on some TI Launchpads only, see compatibility section below.
+
+Quick HOWTO :
+-------------
+
+Using a F5529 Launchpad and a RFM95W module, make the following connections :
+
+| Launchpad | RFM95 |
+| --------- | ----- |
+|       3V3 |  3.3V |
+|       GND |   GND |
+|      P1.6 |  DIO0 |
+|      P3.5 |  DIO1 |
+|      P3.2 |   SCK |
+|      P3.1 |  MISO |
+|      P3.0 |  MOSI |
+|      P7.4 | RESET |
+|      P2.2 |   NSS |
+
+Then replace the LMIC pin mapping structure in the ABP or OTAA example by :
+
+```
+const lmic_pinmap lmic_pins = {
+    18,   //nss
+    LMIC_UNUSED_PIN,    //rxtx
+    17,  //rst
+    {5, 30, LMIC_UNUSED_PIN},  //dio0,1,2
+};
+```
  
-Original ReadMe from https://github.com/matthijskooijman/arduino-lmic :
+Boards compatibility status :
+-----------------------------
+
+| Launchpad model    | Compiles | Tested on hardware
+| ------------------ | -------- | ------------------
+| MSP-EXP430F5529LP  |      Yes | Yes
+| MSP-EXP430FR2433LP |       No | N/A
+| MSP-EXP430FR4133LP |       No | N/A
+| MSP-EXP430FR5969LP |      Yes |
+| MSP-EXP430FR6989LP |      Yes |
+| MSP-EXP430G2\*      |       No | N/A
+| MSP-EXP430FR5739LP |       No | N/A
+| MSP-EXP430FR2355LP |       No | N/A
+| MSP-EXP430FR5994LP |      Yes |
+
+If you test on any hardware that I haven't, please let me know.
+
+
+For reference, here's the original ReadMe from https://github.com/matthijskooijman/arduino-lmic :
 
 Arduino-LMIC library
 ====================
