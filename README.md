@@ -43,8 +43,8 @@ Boards compatibility status :
 | MSP-EXP430F5529LP  |      Yes | Yes
 | MSP-EXP430FR2433LP |       No | N/A
 | MSP-EXP430FR4133LP |       No | N/A
-| MSP-EXP430FR5969LP |      Yes |
-| MSP-EXP430FR6989LP |      Yes |
+| MSP-EXP430FR5969LP |      Yes | Yes (reportedly)
+| MSP-EXP430FR6989LP |      Yes | Yes
 | MSP-EXP430G2\*      |       No | N/A
 | MSP-EXP430FR5739LP |       No | N/A
 | MSP-EXP430FR2355LP |       No | N/A
