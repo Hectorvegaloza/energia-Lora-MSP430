@@ -53,6 +53,13 @@ Boards compatibility status :
 If you test on any hardware that I haven't, please let me know.
 
 
+Todolist :
+----------
+
+* Recurrent : Test against the last energia release and update that documentation accordingly.
+* Switch to [the maintained version](https://github.com/mcci-catena/arduino-lmic) of the arduino-lmic library - or drop that project if the said maintained library is already energia compatible.
+
+
 For reference, here's the original ReadMe from https://github.com/matthijskooijman/arduino-lmic :
 
 Arduino-LMIC library
