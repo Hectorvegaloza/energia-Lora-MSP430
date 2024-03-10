@@ -89,7 +89,7 @@ Como mínimo, debería configurar el tipo correcto de transceptor (SX1272
 vs SX1276) en config.h, la mayoría de los demás valores deberían estar bien en su
 valores predeterminados.
 
-## Supported hardware
+## Hardware Soportado
 
 Esta biblioteca está diseñada para usarse con transceptores LoRa simples,
 conectándose a ellos mediante SPI. En particular, el SX1272 y el SX1276
