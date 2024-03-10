@@ -259,7 +259,7 @@ This board uses the following pin mapping:
         .dio = {4, 5, 7},
     };
 
-## Examples
+## Archivos Ejemplo
 
 Esta biblioteca proporciona actualmente tres ejemplos:
 
