@@ -40,7 +40,7 @@ modificado para ejecutarse en el entorno Energía, permitiendo utilizar el SX127
 Transceptores SX1276 y módulos compatibles (como algunos HopeRF RFM9x
 módulos).
 
-## Installing
+## Instalación de esta nueva biblioteca en el entorno de Energía
 
 To install this library:
 
