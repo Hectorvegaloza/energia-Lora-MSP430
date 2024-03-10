@@ -261,7 +261,21 @@ This board uses the following pin mapping:
 
 ## Archivos Ejemplo
 
-Esta biblioteca proporciona actualmente tres ejemplos:
+Esta biblioteca proporciona actualmente CUATRO ejemplos:
+
+- `Lora-Sender-HV.ino`: Modificación del RAW, pero con frecuencia de 915 Mhz y SF10, tx Power en 27
+
+- `ttn-Lora-Sender-HV.ino abp.ino` muestra una transmisión básica de "¡Hola, mundo!" mensaje
+  utilizando el protocolo LoRaWAN. Contiene algunas configuraciones de frecuencia y
+  claves de cifrado destinadas a su uso con The Things Network, pero estas
+  también corresponden a la configuración predeterminada de la mayoría de las puertas de enlace, por lo que
+  También debería funcionar con otras redes y puertas de enlace. este ejemplo
+  utiliza activación por personalización (ABP, preconfiguración de un dispositivo
+  direcciones y claves de cifrado), y no emplea conexiones inalámbricas
+  activación.
+
+  Recepción de paquetes (en respuesta a la transmisión, utilizando el RX1 y
+  También se admiten ventanas de recepción RX2).
 
 - `ttn-abp.ino` muestra una transmisión básica de "¡Hola, mundo!" mensaje
   utilizando el protocolo LoRaWAN. Contiene algunas configuraciones de frecuencia y
