@@ -797,19 +797,22 @@ void  LMIC_enableSubBand (u1_t band) {
   ASSERT(band < 8);
   u1_t start = band * 8;
   u1_t end = start + 8;
-  for (int channel=start; channel < end; ++channel )
+int channel=start;
+  for (channel=start; channel < end; ++channel )
       LMIC_enableChannel(channel);
 }
 void  LMIC_disableSubBand (u1_t band) {
   ASSERT(band < 8);
   u1_t start = band * 8;
   u1_t end = start + 8;
-  for (int channel=start; channel < end; ++channel )
+  int channel=start;
+  for (channel=start; channel < end; ++channel )
       LMIC_disableChannel(channel);
 }
 void  LMIC_selectSubBand (u1_t band) {
   ASSERT(band < 8);
-  for (int b=0; b<8; ++b) {
+  int b=0;
+  for (b=0; b<8; ++b) {
     if (band==b)
       LMIC_enableSubBand(b);
     else

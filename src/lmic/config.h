@@ -5,8 +5,8 @@
 // gcc commandline. Since Arduino does not allow easily modifying the
 // compiler commandline, use this file instead.
 
-#define CFG_eu868 1
-//#define CFG_us915 1
+//#define CFG_eu868 1
+#define CFG_us915 1
 // This is the SX1272/SX1273 radio, which is also used on the HopeRF
 // RFM92 boards.
 //#define CFG_sx1272_radio 1
@@ -31,7 +31,7 @@
 
 // Enable this to allow using printf() to print to the given serial port
 // (or any other Print object). This can be easy for debugging. The
-// current implementation only works on AVR, though.
+// current implementation only works on AVR, though._____________________________________aqui
 //#define LMIC_PRINTF_TO Serial
 
 // Any runtime assertion failures are printed to this serial port (or
@@ -65,7 +65,7 @@
 // hear gateways). This should probably only be used when debugging
 // and/or when talking to the radio directly (e.g. like in the "raw"
 // example).
-//#define DISABLE_INVERT_IQ_ON_RX
+#define DISABLE_INVERT_IQ_ON_RX
 
 // This allows choosing between multiple included AES implementations.
 // Make sure exactly one of these is uncommented.
@@ -74,7 +74,7 @@
 // implementation is optimized for speed on 32-bit processors using
 // fairly big lookup tables, but it takes up big amounts of flash on the
 // AVR architecture.
-// #define USE_ORIGINAL_AES
+#define USE_ORIGINAL_AES
 //
 // This selects the AES implementation written by Ideetroon for their
 // own LoRaWAN library. It also uses lookup tables, but smaller

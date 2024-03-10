@@ -8,17 +8,17 @@ Personalmente, solo lo he probado en MSP430F5529.
 
 Para Usar en este Launchpad y con el modulo (RFM95W) o SX1276, se conecta de la siguiente manera :
 
-| Launchpad | RFM95 |
-| --------- | ----- |
-| 3V3       | 3.3V  |
-| GND       | GND   |
-| P1.6      | DIO0  |
-| P3.5      | DIO1  |
-| P3.2      | SCK   |
-| P3.1      | MISO  |
-| P3.0      | MOSI  |
-| P7.4      | RESET |
-| P2.2      | NSS   |
+                                              | Launchpad | RFM95 |
+                                              | --------- | ----- |
+                                              | 3V3       | 3.3V  |
+                                              | GND       | GND   |
+                                              | P1.6      | DIO0  |
+                                              | P3.5      | DIO1  |
+                                              | P3.2      | SCK   |
+                                              | P3.1      | MISO  |
+                                              | P3.0      | MOSI  |
+                                              | P7.4      | RESET |
+                                              | P2.2      | NSS   |
 
 Esta porción de código abajo, es la configuración adicional que se tuvo que modificar para que funcionara con Energia.
 
@@ -33,43 +33,12 @@ const lmic_pinmap lmic_pins = {
 
 Aqui se puede mostrar visualmente
 
-## Boards compatibility status :
+# Librería Arduino-LMIC
 
-| Launchpad model    | Compiles | Tested on hardware |
-| ------------------ | -------- | ------------------ |
-| MSP-EXP430F5529LP  | Yes      | Yes                |
-| MSP-EXP430FR2433LP | No       | N/A                |
-| MSP-EXP430FR4133LP | No       | N/A                |
-| MSP-EXP430FR5969LP | Yes      | Yes (reportedly)   |
-| MSP-EXP430FR6989LP | Yes      | Yes                |
-| MSP-EXP430G2\*     | No       | N/A                |
-| MSP-EXP430FR5739LP | No       | N/A                |
-| MSP-EXP430FR2355LP | No       | N/A                |
-| MSP-EXP430FR5994LP | Yes      |
-
-If you test on any hardware that I haven't, please let me know.
-
-## Todolist :
-
-- Recurrent : Test against the last energia release and update that documentation accordingly.
-- Switch to [the maintained version](https://github.com/mcci-catena/arduino-lmic) of the arduino-lmic library - or drop that project if the said maintained library is already energia compatible.
-
-For reference, here's the original ReadMe from https://github.com/matthijskooijman/arduino-lmic :
-
-# Arduino-LMIC library
-
-This repository contains the IBM LMIC (LoraMAC-in-C) library, slightly
-modified to run in the Arduino environment, allowing using the SX1272,
-SX1276 tranceivers and compatible modules (such as some HopeRF RFM9x
-modules).
-
-This library mostly exposes the functions defined by LMIC, it makes no
-attempt to wrap them in a higher level API that is more in the Arduino
-style. To find out how to use the library itself, see the examples, or
-see the PDF file in the doc subdirectory.
-
-This library requires Arduino IDE version 1.6.6 or above, since it
-requires C99 mode to be enabled by default.
+Este repositorio contiene la biblioteca IBM LMIC (LoraMAC-in-C), ligeramente
+modificado para ejecutarse en el entorno Energía, permitiendo utilizar el SX1272,
+Transceptores SX1276 y módulos compatibles (como algunos HopeRF RFM9x
+módulos).
 
 ## Installing
 
