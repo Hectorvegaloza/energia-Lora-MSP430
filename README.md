@@ -1,30 +1,26 @@
-Energia-LMIC
-============
+# Energia-LMIC-MSP430F5529 (Bajo Consumo)
 
-An effort to make the Arduino-LMIC library work in Energia IDE so that
-MSP430 µCs can also be used easily to talk LoraWAN / [The Things Network](https://www.thethingsnetwork.org/).
-For more information on Energia, see [http://energia.nu](http://energia.nu).
+Es una mejora o adaptación en español de la libreria Arduino-LMIC para que pueda funcionar con el IDE Energia de Texas-Instrument desarrollada por [DeuxVis](https://github.com/DeuxVis). Esta aplicación tambien facilmente se puede usar en LoraWAN / [The Things Network](https://github.com/DeuxVis).
 
-Works on some TI Launchpads only, see compatibility section below.
+Personalmente, solo lo he probado en MSP430F5529.
 
-Quick HOWTO :
--------------
+## Como conectar :
 
-Using a F5529 Launchpad and a RFM95W module, make the following connections :
+Para Usar en este Launchpad y con el modulo (RFM95W) o SX1276, se conecta de la siguiente manera :
 
 | Launchpad | RFM95 |
 | --------- | ----- |
-|       3V3 |  3.3V |
-|       GND |   GND |
-|      P1.6 |  DIO0 |
-|      P3.5 |  DIO1 |
-|      P3.2 |   SCK |
-|      P3.1 |  MISO |
-|      P3.0 |  MOSI |
-|      P7.4 | RESET |
-|      P2.2 |   NSS |
+| 3V3       | 3.3V  |
+| GND       | GND   |
+| P1.6      | DIO0  |
+| P3.5      | DIO1  |
+| P3.2      | SCK   |
+| P3.1      | MISO  |
+| P3.0      | MOSI  |
+| P7.4      | RESET |
+| P2.2      | NSS   |
 
-Then replace the LMIC pin mapping structure in the ABP or OTAA example by :
+Esta porción de código abajo, es la configuración adicional que se tuvo que modificar para que funcionara con Energia.
 
 ```
 const lmic_pinmap lmic_pins = {
@@ -34,36 +30,34 @@ const lmic_pinmap lmic_pins = {
     {5, 30, LMIC_UNUSED_PIN},  //dio0,1,2
 };
 ```
- 
-Boards compatibility status :
------------------------------
 
-| Launchpad model    | Compiles | Tested on hardware
-| ------------------ | -------- | ------------------
-| MSP-EXP430F5529LP  |      Yes | Yes
-| MSP-EXP430FR2433LP |       No | N/A
-| MSP-EXP430FR4133LP |       No | N/A
-| MSP-EXP430FR5969LP |      Yes | Yes (reportedly)
-| MSP-EXP430FR6989LP |      Yes | Yes
-| MSP-EXP430G2\*      |       No | N/A
-| MSP-EXP430FR5739LP |       No | N/A
-| MSP-EXP430FR2355LP |       No | N/A
-| MSP-EXP430FR5994LP |      Yes |
+Aqui se puede mostrar visualmente
+
+## Boards compatibility status :
+
+| Launchpad model    | Compiles | Tested on hardware |
+| ------------------ | -------- | ------------------ |
+| MSP-EXP430F5529LP  | Yes      | Yes                |
+| MSP-EXP430FR2433LP | No       | N/A                |
+| MSP-EXP430FR4133LP | No       | N/A                |
+| MSP-EXP430FR5969LP | Yes      | Yes (reportedly)   |
+| MSP-EXP430FR6989LP | Yes      | Yes                |
+| MSP-EXP430G2\*     | No       | N/A                |
+| MSP-EXP430FR5739LP | No       | N/A                |
+| MSP-EXP430FR2355LP | No       | N/A                |
+| MSP-EXP430FR5994LP | Yes      |
 
 If you test on any hardware that I haven't, please let me know.
 
+## Todolist :
 
-Todolist :
-----------
-
-* Recurrent : Test against the last energia release and update that documentation accordingly.
-* Switch to [the maintained version](https://github.com/mcci-catena/arduino-lmic) of the arduino-lmic library - or drop that project if the said maintained library is already energia compatible.
-
+- Recurrent : Test against the last energia release and update that documentation accordingly.
+- Switch to [the maintained version](https://github.com/mcci-catena/arduino-lmic) of the arduino-lmic library - or drop that project if the said maintained library is already energia compatible.
 
 For reference, here's the original ReadMe from https://github.com/matthijskooijman/arduino-lmic :
 
-Arduino-LMIC library
-====================
+# Arduino-LMIC library
+
 This repository contains the IBM LMIC (LoraMAC-in-C) library, slightly
 modified to run in the Arduino environment, allowing using the SX1272,
 SX1276 tranceivers and compatible modules (such as some HopeRF RFM9x
@@ -77,43 +71,45 @@ see the PDF file in the doc subdirectory.
 This library requires Arduino IDE version 1.6.6 or above, since it
 requires C99 mode to be enabled by default.
 
-Installing
-----------
+## Installing
+
 To install this library:
 
- - install it using the Arduino Library manager ("Sketch" -> "Include
-   Library" -> "Manage Libraries..."), or
- - download a zipfile from github using the "Download ZIP" button and
-   install it using the IDE ("Sketch" -> "Include Library" -> "Add .ZIP
-   Library..."
- - clone this git repository into your sketchbook/libraries folder.
+- install it using the Arduino Library manager ("Sketch" -> "Include
+  Library" -> "Manage Libraries..."), or
+- download a zipfile from github using the "Download ZIP" button and
+  install it using the IDE ("Sketch" -> "Include Library" -> "Add .ZIP
+  Library..."
+- clone this git repository into your sketchbook/libraries folder.
 
 For more info, see https://www.arduino.cc/en/Guide/Libraries
 
-Features
---------
+## Features
+
 The LMIC library provides a fairly complete LoRaWAN Class A and Class B
 implementation, supporting the EU-868 and US-915 bands. Only a limited
 number of features was tested using this port on Arduino hardware, so be
 careful when using any of the untested features.
 
 What certainly works:
- - Sending packets uplink, taking into account duty cycling.
- - Encryption and message integrity checking.
- - Receiving downlink packets in the RX2 window.
- - Custom frequencies and datarate settings.
- - Over-the-air activation (OTAA / joining).
+
+- Sending packets uplink, taking into account duty cycling.
+- Encryption and message integrity checking.
+- Receiving downlink packets in the RX2 window.
+- Custom frequencies and datarate settings.
+- Over-the-air activation (OTAA / joining).
 
 What has not been tested:
- - Receiving downlink packets in the RX1 window.
- - Receiving and processing MAC commands.
- - Class B operation.
+
+- Receiving downlink packets in the RX1 window.
+- Receiving and processing MAC commands.
+- Class B operation.
 
 If you try one of these untested features and it works, be sure to let
 us know (creating a github issue is probably the best way for that).
 
-Configuration
--------------
+## Configuration
+
 A number of features can be configured or disabled by editing the
 `config.h` file in the library folder. Unfortunately the Arduino
 environment does not offer any way to do this (compile-time)
@@ -124,8 +120,8 @@ At the very least, you should set the right type of transceiver (SX1272
 vs SX1276) in config.h, most other values should be fine at their
 defaults.
 
-Supported hardware
-------------------
+## Supported hardware
+
 This library is intended to be used with plain LoRa transceivers,
 connecting to them using SPI. In particular, the SX1272 and SX1276
 families are supported (which should include SX1273, SX1277, SX1278 and
@@ -136,7 +132,7 @@ and RFM95 boards (which supposedly contain an SX1272 and SX1276 chip
 respectively).
 
 This library contains a full LoRaWAN stack and is intended to drive
-these Transceivers directly. It is *not* intended to be used with
+these Transceivers directly. It is _not_ intended to be used with
 full-stack devices like the Microchip RN2483 and the Embit LR1272E.
 These contain a transceiver and microcontroller that implements the
 LoRaWAN stack and exposes a high-level serial interface instead of the
@@ -158,8 +154,8 @@ encryption implementation, which should free up another 8K or so of
 flash in the future, making this library feasible to run on a 328p
 microcontroller.
 
-Connections
------------
+## Connections
+
 To make this library work, your Arduino (or whatever Arduino-compatible
 board you are using) should be connected to the transceiver. The exact
 connections are a bit dependent on the transceiver board and Arduino
@@ -175,14 +171,16 @@ series with all data lines that might prevent damage, but I would not
 count on that.
 
 ### Power
+
 The SX127x transceivers need a supply voltage between 1.8V and 3.9V.
 Using a 3.3V supply is typical. Some modules have a single power pin
 (like the HopeRF modules, labeled 3.3V) but others expose multiple power
 pins for different parts (like the Semtech evaluation board that has
 `VDD_RF`, `VDD_ANA` and `VDD_FEM`), which can all be connected together.
-Any *GND* pins need to be connected to the Arduino *GND* pin(s).
+Any _GND_ pins need to be connected to the Arduino _GND_ pin(s).
 
 ### SPI
+
 The primary way of communicating with the transceiver is through SPI
 (Serial Peripheral Interface). This uses four pins: MOSI, MISO, SCK and
 SS. The former three need to be directly connected: so MOSI to MOSI,
@@ -192,7 +190,7 @@ documentation](SPI).
 
 The SS (slave select) connection is a bit more flexible. On the SPI
 slave side (the transceiver), this must be connect to the pin
-(typically) labeled *NSS*. On the SPI master (Arduino) side, this pin
+(typically) labeled _NSS_. On the SPI master (Arduino) side, this pin
 can connect to any I/O pin. Most Arduinos also have a pin labeled "SS",
 but this is only relevant when the Arduino works as an SPI slave, which
 is not the case here. Whatever pin you pick, you need to tell the
@@ -201,6 +199,7 @@ library what pin you used through the pin mapping (see below).
 [SPI]: https://www.arduino.cc/en/Reference/SPI
 
 ### DIO pins
+
 The DIO (digitial I/O) pins on the transceiver board can be configured
 for various functions. The LMIC library uses them to get instant status
 information from the transceiver. For example, when a LoRa transmission
@@ -215,12 +214,14 @@ interrupts or other special hardware features (though this might be
 added in the feature, see also the "Timing" section).
 
 In LoRa mode the DIO pins are used as follows:
- * DIO0: TxDone and RxDone
- * DIO1: RxTimeout
+
+- DIO0: TxDone and RxDone
+- DIO1: RxTimeout
 
 In FSK mode they are used as follows::
- * DIO0: PayloadReady and PacketSent
- * DIO2: TimeOut
+
+- DIO0: PayloadReady and PacketSent
+- DIO2: TimeOut
 
 Both modes need only 2 pins, but the tranceiver does not allow mapping
 them in such a way that all needed interrupts map to the same 2 pins.
@@ -231,6 +232,7 @@ The pins used on the Arduino side should be configured in the pin
 mapping in your sketch (see below).
 
 ### Reset
+
 The transceiver has a reset pin that can be used to explicitely reset
 it. The LMIC library uses this to ensure the chip is in a consistent
 state at startup. In practice, this pin can be left disconnected, since
@@ -241,43 +243,45 @@ On the Arduino side, any I/O pin can be used. The pin number used must
 be configured in the pin mapping (see below).
 
 ### RXTX
+
 The transceiver contains two separate antenna connections: One for RX
 and one for TX. A typical transceiver board contains an antenna switch
 chip, that allows switching a single antenna between these RX and TX
-connections.  Such a antenna switcher can typically be told what
-position it should be through an input pin, often labeled *RXTX*.
+connections. Such a antenna switcher can typically be told what
+position it should be through an input pin, often labeled _RXTX_.
 
-The easiest way to control the antenna switch is to use the *RXTX* pin
+The easiest way to control the antenna switch is to use the _RXTX_ pin
 on the SX127x transceiver. This pin is automatically set high during TX
 and low during RX. For example, the HopeRF boards seem to have this
-connection in place, so they do not expose any *RXTX* pins and the pin
+connection in place, so they do not expose any _RXTX_ pins and the pin
 can be marked as unused in the pin mapping.
 
 Some boards do expose the antenna switcher pin, and sometimes also the
-SX127x *RXTX* pin. For example, the SX1272 evaluation board calls the
-former *FEM_CTX* and the latter *RXTX*. Again, simply connecting these
+SX127x _RXTX_ pin. For example, the SX1272 evaluation board calls the
+former _FEM_CTX_ and the latter _RXTX_. Again, simply connecting these
 together with a jumper wire is the easiest solution.
 
-Alternatively, or if the SX127x *RXTX* pin is not available, LMIC can be
+Alternatively, or if the SX127x _RXTX_ pin is not available, LMIC can be
 configured to control the antenna switch. Connect the antenna switch
-control pin (e.g. *FEM_CTX* on the Semtech evaluation board) to any I/O
+control pin (e.g. _FEM_CTX_ on the Semtech evaluation board) to any I/O
 pin on the Arduino side, and configure the pin used in the pin map (see
-below). It is not entirely clear why would *not* want the transceiver to
+below). It is not entirely clear why would _not_ want the transceiver to
 control the antenna directly, though.
 
 ### Pin mapping
+
 As described above, most connections can use arbitrary I/O pins on the
 Arduino side. To tell the LMIC library about these, a pin mapping struct
 is used in the sketch file.
 
 For example, this could look like this:
 
-	lmic_pinmap lmic_pins = {
-	    .nss = 6,
-	    .rxtx = LMIC_UNUSED_PIN,
-	    .rst = 5,
-	    .dio = {2, 3, 4},
-	};
+    lmic_pinmap lmic_pins = {
+        .nss = 6,
+        .rxtx = LMIC_UNUSED_PIN,
+        .rst = 5,
+        .dio = {2, 3, 4},
+    };
 
 The names refer to the pins on the transceiver side, the numbers refer
 to the Arduino pin numbers (to use the analog pins, use constants like
@@ -291,6 +295,7 @@ The name of this struct must always be `lmic_pins`, which is a special name
 recognized by the library.
 
 #### LoRa Nexus by Ideetron
+
 This board uses the following pin mapping:
 
     const lmic_pinmap lmic_pins = {
@@ -300,37 +305,37 @@ This board uses the following pin mapping:
         .dio = {4, 5, 7},
     };
 
-Examples
---------
+## Examples
+
 This library currently provides three examples:
 
- - `ttn-abp.ino` shows a basic transmission of a "Hello, world!" message
-   using the LoRaWAN protocol. It contains some frequency settings and
-   encryption keys intended for use with The Things Network, but these
-   also correspond to the default settings of most gateways, so it
-   should work with other networks and gateways as well. This example
-   uses activation-by-personalization (ABP, preconfiguring a device
-   address and encryption keys), and does not employ over-the-air
-   activation.
+- `ttn-abp.ino` shows a basic transmission of a "Hello, world!" message
+  using the LoRaWAN protocol. It contains some frequency settings and
+  encryption keys intended for use with The Things Network, but these
+  also correspond to the default settings of most gateways, so it
+  should work with other networks and gateways as well. This example
+  uses activation-by-personalization (ABP, preconfiguring a device
+  address and encryption keys), and does not employ over-the-air
+  activation.
 
-   Reception of packets (in response to transmission, using the RX1 and
-   RX2 receive windows is also supported).
+  Reception of packets (in response to transmission, using the RX1 and
+  RX2 receive windows is also supported).
 
- - `ttn-otaa.ino` also sends a "Hello, world!" message, but uses over
-   the air activation (OTAA) to first join a network to establish a
-   session and security keys. This was tested with The Things Network,
-   but should also work (perhaps with some changes) for other networks.
+- `ttn-otaa.ino` also sends a "Hello, world!" message, but uses over
+  the air activation (OTAA) to first join a network to establish a
+  session and security keys. This was tested with The Things Network,
+  but should also work (perhaps with some changes) for other networks.
 
- - `raw.ino` shows how to access the radio on a somewhat low level,
-   and allows to send raw (non-LoRaWAN) packets between nodes directly.
-   This is useful to verify basic connectivity, and when no gateway is
-   available, but this example also bypasses duty cycle checks, so be
-   careful when changing the settings.
+- `raw.ino` shows how to access the radio on a somewhat low level,
+  and allows to send raw (non-LoRaWAN) packets between nodes directly.
+  This is useful to verify basic connectivity, and when no gateway is
+  available, but this example also bypasses duty cycle checks, so be
+  careful when changing the settings.
 
-Timing
-------
+## Timing
+
 Unfortunately, the SX127x tranceivers do not support accurate
-timekeeping themselves (there is a sequencer that is *almost* sufficient
+timekeeping themselves (there is a sequencer that is _almost_ sufficient
 for timing the RX1 and RX2 downlink windows, but that is only available
 in FSK mode, not in LoRa mode). This means that the microcontroller is
 responsible for keeping track of time. In particular, it should note
@@ -338,7 +343,7 @@ when a packet finished transmitting, so it can open up the RX1 and RX2
 receive windows at a fixed time after the end of transmission.
 
 This timing uses the Arduino `micros()` timer, which has a granularity
-of 4μs and is based on the primary microcontroller clock.  For timing
+of 4μs and is based on the primary microcontroller clock. For timing
 events, the tranceiver uses its DIOx pins as interrupt outputs. In the
 current implementation, these pins are not handled by an actual
 interrupt handler, but they are just polled once every LMIC loop,
@@ -403,8 +408,8 @@ a bit vague on the RC oscillator's accuracy and how to use it exactly
 (some registers seem to be FSK-mode only), so this needs some
 experiments.
 
-Downlink datarate
------------------
+## Downlink datarate
+
 Note that the datarate used for downlink packets in the RX2 window
 defaults to SF12BW125 according to the specification, but some networks
 use different values (iot.semtech.com and The Things Network both use
@@ -418,11 +423,11 @@ this.
 When using OTAA, the network communicates the RX2 settings in the
 join accept message, but the LMIC library does not currently process
 these settings. Until that is solved (see issue #20), you should
-manually set the RX2 rate, *after* joining (see the handling of
+manually set the RX2 rate, _after_ joining (see the handling of
 `EV_JOINED` in the `ttn-otaa.ino` for an example.
 
-License
--------
+## License
+
 Most source files in this repository are made available under the
 Eclipse Public License v1.0. The examples which use a more liberal
 license. Some of the AES code is available under the LGPL. Refer to each
